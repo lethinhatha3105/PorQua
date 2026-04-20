@@ -361,7 +361,7 @@ class PercentilePortfolios(Optimization):
                  n_percentiles = 5,  # creates quintile portfolios by default.
                  **kwargs):
         super().__init__(**kwargs)
-        self.estimator = estimator
+        self.estimator = MeanEstimator() if estimator is None else estimator
         self.params = {'solver_name': 'percentile',
                        'n_percentiles': n_percentiles,
                        'field': field}
